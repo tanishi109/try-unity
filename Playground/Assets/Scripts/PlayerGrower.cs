@@ -12,7 +12,7 @@ public class PlayerGrower : MonoBehaviour {
 
 	void Update()
 	{
-		if (Input.GetKeyDown ("space")) {
+		if (Input.GetKey ("space")) {
 			animator.SetBool ("IsGrowing", true);
 		} else {
 			animator.SetBool ("IsGrowing", false);
