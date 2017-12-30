@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerGrower : MonoBehaviour {
 	private Animator animator;
+	public string key;
 
 	void Awake ()
 	{
@@ -12,7 +13,7 @@ public class PlayerGrower : MonoBehaviour {
 
 	void Update()
 	{
-		if (Input.GetKey ("space")) {
+		if (Input.GetKey (key)) {
 			animator.SetBool ("IsGrowing", true);
 		} else {
 			animator.SetBool ("IsGrowing", false);
