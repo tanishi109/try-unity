@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class JudgeController : MonoBehaviour {
-	private GameObject center;
+	private GameObject[] fingers1;
 
 	// Use this for initialization
 	void Start () {
-		center = GameObject.Find ("/Player/Center");
+		fingers1 = new GameObject[] {
+			GameObject.Find ("/Player/Left"),
+			GameObject.Find ("/Player/Center"),
+			GameObject.Find ("/Player/Right")
+		};
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		PlayerGrower playerGrower = center.GetComponent<PlayerGrower>();
-		print (playerGrower.length);
+		foreach (GameObject f in fingers1) {
+			PlayerGrower playerGrower = f.GetComponent<PlayerGrower>();
+			print ("");
+			print (playerGrower.key);
+			print (playerGrower.length);
+		}
 	}
 }
