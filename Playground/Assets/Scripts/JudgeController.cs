@@ -13,6 +13,6 @@ public class JudgeController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		PlayerGrower playerGrower = center.GetComponent<PlayerGrower>();
-		print (playerGrower.key);
+		print (playerGrower.length);
 	}
 }
