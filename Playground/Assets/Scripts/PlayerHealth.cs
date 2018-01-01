@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour {
 
 	public void TakeDamage ()
 	{
-		m_CurrentHealth -= 0.4f;
+		m_CurrentHealth -= 0.8f;
 
 		SetHealthUI ();
 
