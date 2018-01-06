@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour {
 	void LateUpdate()
 	{
 		offset = Quaternion.AngleAxis (Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * offset;
-		offset.y = (Quaternion.AngleAxis (Input.GetAxis("Mouse Y") * turnSpeedY, Vector3.right) * offset).y;
+		offset.y = (Quaternion.AngleAxis (Input.GetAxis("Mouse Y") * turnSpeedY * -1f, Vector3.right) * offset).y;
 		transform.position = player.transform.position + offset;
 		transform.LookAt(player.transform.position);
 	}
