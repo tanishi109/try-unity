@@ -41,8 +41,8 @@ public class LegsController : MonoBehaviour {
 	void Mimic() {
 		int mType = player.GetMimicType ();
 
-		Color[] newCols = new Color[] {Color.blue, Color.white, Color.red, Color.green};
-		foreach (int i in new int[] {0, 1, 2, 3}) {
+		Color[] newCols = new Color[] {Color.blue, Color.red, Color.green};
+		foreach (int i in new int[] {0, 1, 2}) {
 			if (mType == i) {
 				Color newCol = newCols[i];
 				newCol.a = 0.25f;

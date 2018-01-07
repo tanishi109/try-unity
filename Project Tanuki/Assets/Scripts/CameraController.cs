@@ -13,14 +13,17 @@ public class CameraController : MonoBehaviour {
 
 	void Start () {
 		Cursor.lockState = CursorLockMode.Locked;
-		offset = new Vector3(player.transform.position.x, player.transform.position.y + 8.0f, player.transform.position.z + 7.0f);
+		offset = new Vector3(player.transform.position.x, player.transform.position.y + 4.0f, player.transform.position.z + 3.0f);
 	}
 
 	void LateUpdate()
 	{
 		offset = Quaternion.AngleAxis (Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * offset;
-		offset.y = (Quaternion.AngleAxis (Input.GetAxis("Mouse Y") * turnSpeedY * -1f, Vector3.right) * offset).y;
+		offset.y = (Quaternion.AngleAxis (Input.GetAxis("Mouse Y") * turnSpeedY, Vector3.right) * offset).y;
 		transform.position = player.transform.position + offset;
-		transform.LookAt(player.transform.position);
+
+		Vector3 lookPoint = player.transform.position;
+		lookPoint += new Vector3(0, 3, 0);
+		transform.LookAt(lookPoint);
 	}
 }
