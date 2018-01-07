@@ -21,9 +21,9 @@ public class PlayerController : MonoBehaviour {
 
 		Vector3 desiredMoveDirection = forward * inputVertical + right * inputHorizontal;
 
-		transform.position += desiredMoveDirection * speed * Time.deltaTime;
-
 		if (inputHorizontal != 0 || inputVertical != 0) {
+			transform.position += desiredMoveDirection * speed * Time.deltaTime;
+
 			Quaternion targetRotation = Quaternion.LookRotation (desiredMoveDirection * speed * Time.deltaTime, Vector3.up);
 			Quaternion newRotation = Quaternion.Lerp (transform.rotation, targetRotation, 15f * Time.deltaTime);
 
