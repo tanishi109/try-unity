@@ -8,12 +8,15 @@ public class PlayerModel : MonoBehaviour {
 	private float maxLegState = 5.0f;
 	private float minLegState = 0.0f;
 	private float jumpDuration = 0.5f;
+	private float legGrowSpeed = 0.5f;
+	private float legShrinkSpeed = -1.0f;
 
 	void Awake() {
 		legStates = new float[] {0f, 0f, 0f};
 	}
 
-	public void GrowLeg(int index, float amount) {
+	public void GrowLeg(int index, bool isGrow) {
+		float amount = isGrow ? legGrowSpeed : legShrinkSpeed;
 		float newState = legStates [index] + amount;
 
 		if (newState > maxLegState) {
