@@ -7,6 +7,7 @@ public class PlayerModel : MonoBehaviour {
 
 	private float maxLegState = 5.0f;
 	private float minLegState = 0.0f;
+	private float jumpDuration = 0.5f;
 
 	void Awake() {
 		legStates = new float[] {0f, 0f, 0f};
@@ -48,6 +49,17 @@ public class PlayerModel : MonoBehaviour {
 		}
 
 		return -1; // Other
+	}
+
+	public IEnumerator JumpTo (Vector3 to) {
+		Vector3 currentPos = transform.position;
+		float t = 0f;
+
+		while(t < 1) {
+			t += Time.deltaTime / jumpDuration;
+			transform.position = Vector3.Lerp(currentPos, to, t);
+			yield return null;
+		}
 	}
 
 	private bool IsExtended (float legState) {

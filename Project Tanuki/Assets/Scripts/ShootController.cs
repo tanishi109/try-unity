@@ -14,11 +14,12 @@ public class ShootController : MonoBehaviour {
 	private WaitForSeconds shotDuration = new WaitForSeconds(.07f);
 	private LineRenderer laserLine;
 	private float nextFire; 
-
+	private PlayerModel player;
 
 
 	void Start () {
 		laserLine = GetComponent<LineRenderer>();
+		player = gameObject.GetComponent<PlayerModel> ();
 	}
 
 	void Update () {
@@ -35,6 +36,7 @@ public class ShootController : MonoBehaviour {
 
 			if (Physics.Raycast (rayOrigin, mainCam.transform.forward, out hit, weaponRange)) {
 				laserLine.SetPosition (1, hit.point);
+				StartCoroutine (player.JumpTo (hit.point));
 			} else {
 				laserLine.SetPosition (1, rayOrigin + (mainCam.transform.forward * weaponRange));
 			}

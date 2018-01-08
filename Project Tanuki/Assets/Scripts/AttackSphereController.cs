@@ -11,7 +11,6 @@ public class AttackSphereController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider other) {
-		print ("*** trigger");
 		if (other.gameObject.CompareTag ("Hittable")) {
 			AttackCollisionController controller = gameObject.GetComponentInParent<AttackCollisionController>();
 			PlayerModel myPlayer = gameObject.GetComponentInParent<PlayerModel>();
