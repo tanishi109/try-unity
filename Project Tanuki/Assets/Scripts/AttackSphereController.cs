@@ -10,6 +10,11 @@ public class AttackSphereController : MonoBehaviour {
 		myRb = gameObject.GetComponentInParent<Rigidbody> ();
 	}
 
+	void OnTriggerStay (Collider other) {
+		// TODO
+		// めり込み防止したい
+	}
+
 	void OnTriggerEnter (Collider other) {
 		if (other.gameObject.CompareTag ("Hittable")) {
 			AttackCollisionController controller = gameObject.GetComponentInParent<AttackCollisionController>();
