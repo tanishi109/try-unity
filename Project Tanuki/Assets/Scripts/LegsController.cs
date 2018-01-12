@@ -16,6 +16,10 @@ public class LegsController : MonoBehaviour {
 	private string[] acceptableKeys;
 	private Dictionary<string, Command> commands = new Dictionary<string, Command> ();
 
+	// AIしか使わないコードも増えてきたからControllerから分離していきたい
+	private float[] changeMimicTypeTime = new float[] {0f, 0f, 0f};
+	private bool[] AIMimicCommands = new bool[] {false, false, false};
+
 	void Start () {
 		legs = legsObject.GetComponentsInChildren<Transform> ();
 		sphereMaterial = attackSphere.GetComponent<Renderer> ().material;
@@ -66,9 +70,45 @@ public class LegsController : MonoBehaviour {
 
 
 	void InputByAI () {
-		// ずっとチョキ
-		Command._L.exec (player, true);
-		Command._R.exec (player, true);
+		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
+
+		foreach(GameObject p in players) {
+			PlayerModel pModel = p.GetComponent<PlayerModel> ();
+			int mimicType = pModel.GetMimicType ();
+
+			if (mimicType == 0) {
+				changeMimicTypeTime[0] += Time.deltaTime;
+			}
+			if (mimicType == 1) {
+				changeMimicTypeTime[1] += Time.deltaTime;
+			}
+			if (mimicType == 2) {
+				changeMimicTypeTime[2] += Time.deltaTime;
+			}
+
+			if (changeMimicTypeTime [0] > 3f) {
+				changeMimicTypeTime [0] = 0f;
+				AIMimicCommands [0] = true;
+				AIMimicCommands [1] = true;
+				AIMimicCommands [2] = true;
+			}
+			if (changeMimicTypeTime [1] > 3f) {
+				changeMimicTypeTime [1] = 0f;
+				AIMimicCommands [0] = false;
+				AIMimicCommands [1] = false;
+				AIMimicCommands [2] = false;
+			}
+			if (changeMimicTypeTime [2] > 3f) {
+				changeMimicTypeTime [2] = 0f;
+				AIMimicCommands [0] = true;
+				AIMimicCommands [1] = false;
+				AIMimicCommands [2] = true;
+			}
+
+			Command._L.exec (player, AIMimicCommands[0]);
+			Command._R.exec (player, AIMimicCommands[1]);
+			Command._ZR.exec (player, AIMimicCommands[2]);
+		}
 	}
 
 	Transform GetLeg(int index) {

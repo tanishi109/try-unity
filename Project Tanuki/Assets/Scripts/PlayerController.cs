@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour {
 		} else {
 			UpdateForAI ();
 		}
+
+		RespawnIfFall ();
 	}
 
 	void InputByPlayer() {
@@ -56,7 +58,7 @@ public class PlayerController : MonoBehaviour {
 			horizontal = distance.normalized.x;
 			vertical = distance.normalized.z;
 
-			print ("x = " + distance.normalized.x + ", z = " + distance.normalized.z);
+//			print ("x = " + distance.normalized.x + ", z = " + distance.normalized.z);
 		}
 			
 		// mainCamじゃなくてgameObject.transformにしたら向いてる方向基準でInput制御になる。カメラは不要になる
@@ -82,7 +84,12 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void UpdateForAI() {
-		if (transform.position.z < -40f) {
+	}
+
+	void RespawnIfFall() {
+		print (transform.position.z);
+		if (transform.position.z > 40f) {
+			print ("** fall");
 			transform.position = new Vector3 (0f, 4f, -2.5f);
 		}
 	}
