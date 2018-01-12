@@ -18,9 +18,15 @@ public class CameraController : MonoBehaviour {
 
 	void LateUpdate()
 	{
-		offset = Quaternion.AngleAxis (Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * offset;
-		offset.y = (Quaternion.AngleAxis (Input.GetAxis("Mouse Y") * turnSpeedY, Vector3.right) * offset).y;
+		Vector3 newOffset = Quaternion.AngleAxis (Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * offset;
+		newOffset.y = (Quaternion.AngleAxis (Input.GetAxis("Mouse Y") * turnSpeedY, Vector3.right) * offset).y;
+		if (newOffset.y < -6f || newOffset.y > 12f) {
+			return;
+		}
+		offset = newOffset;
+
 		transform.position = player.transform.position + offset;
+//		print (offset);
 
 		Vector3 lookPoint = player.transform.position;
 		lookPoint += new Vector3(0, 3, 0);

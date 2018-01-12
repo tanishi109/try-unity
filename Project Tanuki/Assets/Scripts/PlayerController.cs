@@ -87,9 +87,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void RespawnIfFall() {
-		print (transform.position.z);
-		if (transform.position.z > 40f) {
-			print ("** fall");
+		if (transform.position.y < -20f) {
+			GetComponent<Rigidbody>().velocity = Vector3.zero;
+			GetComponent<Rigidbody>().angularVelocity = Vector3.zero; 
 			transform.position = new Vector3 (0f, 4f, -2.5f);
 		}
 	}

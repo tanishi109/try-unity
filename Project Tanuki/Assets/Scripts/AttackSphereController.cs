@@ -32,7 +32,7 @@ public class AttackSphereController : MonoBehaviour {
 			}
 			if (winner == -1) {
 				print ("drawn");
-				controller.KnockbackMe (other.gameObject, 100.0f);
+				controller.KnockbackMe (other.gameObject, 50.0f);
 			}
 		}
 	}

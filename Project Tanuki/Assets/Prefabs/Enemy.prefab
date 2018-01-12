@@ -141,12 +141,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4627022068759400}
   - component: {fileID: 54696192952288578}
-  - component: {fileID: 114559333657596034}
   - component: {fileID: 114903043599712174}
   - component: {fileID: 114668516760023556}
   - component: {fileID: 114618146426664016}
   - component: {fileID: 120921550260080846}
   - component: {fileID: 114448592893652984}
+  - component: {fileID: 114273990803525534}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -618,6 +618,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114273990803525534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698071779765830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35b1b6260711b485f9083d1acee61a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
+  speed: 4
 --- !u!114 &114448592893652984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -635,19 +648,6 @@ MonoBehaviour:
   hitForce: 100
   shotOrigin: {fileID: 4894413744156696}
   mainCam: {fileID: 0}
---- !u!114 &114559333657596034
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1698071779765830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35b1b6260711b485f9083d1acee61a94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCam: {fileID: 0}
-  speed: 4
 --- !u!114 &114618146426664016
 MonoBehaviour:
   m_ObjectHideFlags: 1
